@@ -73,7 +73,7 @@
       var name = (document.getElementById("name") || {}).value || "";
       var email = (document.getElementById("email") || {}).value || "";
       var message = (document.getElementById("message") || {}).value || "";
-      var subject = encodeURIComponent("Contato LibrasTrad / TradIncl — " + name);
+      var subject = encodeURIComponent("Contato Inclusiva - Processos e Treinamentos — " + name);
       var body = encodeURIComponent(
         "Nome: " + name + "\nE-mail: " + email + "\n\nMensagem:\n" + message
       );
