@@ -70,7 +70,7 @@
       var message = (document.getElementById("message") || {}).value || "";
       var subject = encodeURIComponent("Contato Inclusiva - Processos e Treinamentos — " + name);
       var body = encodeURIComponent("Nome: " + name + "\nE-mail: " + email + "\n\nMensagem:\n" + message);
-      window.location.href = "mailto:nprovvidenti@gmail.com?subject=" + subject + "&body=" + body;
+      window.location.href = "mailto:librasinclus@gmail.com?subject=" + subject + "&body=" + body;
     });
   }
 })();
