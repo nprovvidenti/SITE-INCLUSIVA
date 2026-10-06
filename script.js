@@ -28,12 +28,8 @@
 
   function onScroll() {
     var y = window.scrollY || document.documentElement.scrollTop;
-    if (header) {
-      header.classList.toggle("is-scrolled", y > 8);
-    }
-    if (backToTop) {
-      backToTop.classList.toggle("is-visible", y > 400);
-    }
+    if (header) header.classList.toggle("is-scrolled", y > 8);
+    if (backToTop) backToTop.classList.toggle("is-visible", y > 400);
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
@@ -46,7 +42,6 @@
 
   var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!prefersReduced && "IntersectionObserver" in window) {
-    var reveals = document.querySelectorAll(".reveal");
     var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -58,7 +53,7 @@
       },
       { root: null, rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
     );
-    reveals.forEach(function (el) {
+    document.querySelectorAll(".reveal").forEach(function (el) {
       observer.observe(el);
     });
   } else {
@@ -74,11 +69,8 @@
       var email = (document.getElementById("email") || {}).value || "";
       var message = (document.getElementById("message") || {}).value || "";
       var subject = encodeURIComponent("Contato Inclusiva - Processos e Treinamentos — " + name);
-      var body = encodeURIComponent(
-        "Nome: " + name + "\nE-mail: " + email + "\n\nMensagem:\n" + message
-      );
-      window.location.href =
-        "mailto:nprovvidenti@gmail.com?subject=" + subject + "&body=" + body;
+      var body = encodeURIComponent("Nome: " + name + "\nE-mail: " + email + "\n\nMensagem:\n" + message);
+      window.location.href = "mailto:nprovvidenti@gmail.com?subject=" + subject + "&body=" + body;
     });
   }
 })();
