@@ -62,14 +62,31 @@
     });
   }
 
+  function field(id) {
+    var el = document.getElementById(id);
+    return el && el.value ? String(el.value).trim() : "";
+  }
+
   if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      var name = (document.getElementById("name") || {}).value || "";
-      var email = (document.getElementById("email") || {}).value || "";
-      var message = (document.getElementById("message") || {}).value || "";
-      var subject = encodeURIComponent("Contato Inclusiva - Processos e Treinamentos — " + name);
-      var body = encodeURIComponent("Nome: " + name + "\nE-mail: " + email + "\n\nMensagem:\n" + message);
+      var name = field("name");
+      var lines = [
+        "Nome: " + name,
+        "Instituição ou empresa: " + (field("org") || "—"),
+        "E-mail: " + field("email"),
+        "Telefone / WhatsApp: " + field("phone"),
+        "Tipo de serviço: " + field("service"),
+        "Data ou prazo: " + (field("event-date") || "—"),
+        "Duração: " + (field("duration") || "—"),
+        "Cidade / UF: " + (field("city") || "—"),
+        "Tema e público: " + (field("topic") || "—"),
+        "",
+        "Mensagem:",
+        field("message") || "—"
+      ];
+      var subject = encodeURIComponent("Orçamento Inclusiva — " + name);
+      var body = encodeURIComponent(lines.join("\n"));
       window.location.href = "mailto:librasinclus@gmail.com?subject=" + subject + "&body=" + body;
     });
   }
